@@ -37,6 +37,55 @@ parte_a <- parte_a %>%
 
 ## Faltaría para OS_type si se agrega al final #TODO
 
+
+## Graficas 
+ggplot(data = Dta_p1, aes(x = device_type, y = Revenue)) +
+  stat_boxplot(aes(group = device_type), geom = "errorbar", width = 0.3,
+               color = c("#10a53dFF","#3a5e8cFF", "#541352FF"), size = 0.5, na.rm=T)+
+  geom_boxplot(aes(group = device_type),
+               color = c("#10a53dFF","#3a5e8cFF", "#541352FF"), fill = c("#10a53dFF","#3a5e8cFF", "#541352FF"),
+               size = 0.5, width = 0.6, alpha = 0.3, na.rm=T, outlier.shape = NA) +
+  scale_y_continuous(expand = c(0.01,0.01),limits = c(0,10), breaks = seq(0,300,100)) +
+  labs(x = "Device type",y = "Revenue")+
+  theme_bw()
+
+ggplot(data = Dta_p1, aes(x = os_type, y = Revenue)) +
+  stat_boxplot(aes(group = os_type), geom = "errorbar", width = 0.3,
+               color = c("#10a53dFF","#3a5e8cFF", "#541352FF"), size = 0.5, na.rm=T)+
+  geom_boxplot(aes(group = os_type),
+               color = c("#10a53dFF","#3a5e8cFF", "#541352FF"), fill = c("#10a53dFF","#3a5e8cFF", "#541352FF"),
+               size = 0.5, width = 0.6, alpha = 0.3, na.rm=T, outlier.shape = NA) +
+  scale_y_continuous(expand = c(0.01,0.01),limits = c(0,10), breaks = seq(0,300,100)) +
+  labs(x = "Device type",y = "Revenue")+
+  theme_bw()
+
+
+ggplot(data = Dta_p1, aes(x = time_spent, y = Revenue)) +
+  stat_boxplot(aes(group = os_type), geom = "errorbar", width = 0.3,
+               color = c("#10a53dFF","#3a5e8cFF", "#541352FF"), size = 0.5, na.rm=T)+
+  geom_boxplot(aes(group = os_type),
+               color = c("#10a53dFF","#3a5e8cFF", "#541352FF"), fill = c("#10a53dFF","#3a5e8cFF", "#541352FF"),
+               size = 0.5, width = 0.6, alpha = 0.3, na.rm=T, outlier.shape = NA) +
+  scale_y_continuous(expand = c(0.01,0.01),limits = c(0,10), breaks = seq(0,300,100)) +
+  labs(x = "Device type",y = "Revenue")+
+  theme_bw()
+
+ggplot(data = Dta_p1, aes(x = sign_up, y = Revenue)) +
+  stat_boxplot(aes(group = sign_up), geom = "errorbar", width = 0.3,
+               color = c("#10a53dFF","#3a5e8cFF"), size = 0.5, na.rm=T)+
+  geom_boxplot(aes(group = sign_up),
+               color = c("#10a53dFF","#3a5e8cFF"), fill = c("#10a53dFF","#3a5e8cFF"),
+               size = 0.5, width = 0.6, alpha = 0.3, na.rm=T, outlier.shape = NA) +
+  scale_y_continuous(expand = c(0.01,0.01),limits = c(0,10), breaks = seq(0,300,100)) +
+  labs(x = "Sign up",y = "Revenue")+
+  theme_bw()
+
+
+
+
+
+
+
 # -----------------------------------------------------
 # PART B
 # -----------------------------------------------------
