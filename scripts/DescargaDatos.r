@@ -29,6 +29,14 @@ parte_a <- readRDS("Parte_A.rds")
 # Verify no null data
 colSums(is.na(parte_a))
 
+# Define categoric variable "device_type"
+parte_a <- parte_a %>%
+  mutate(device_type = as.factor(device_type)) %>%
+  mutate(is_returning_user = as.factor(is_returning_user)) %>%
+  mutate(sign_up = as.factor(sign_up))
+
+## Faltaría para OS_type si se agrega al final #TODO
+
 # -----------------------------------------------------
 # PART B
 # -----------------------------------------------------

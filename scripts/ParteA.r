@@ -1,8 +1,8 @@
 # -----------------------------------------------------
 # PART 1
 # Exploratory and predictive analysis from observed data
-# 0) Good practices, clean variables, libraries and data
-# 1) Description of users general behaviour
+# 0) Libraries and data
+# 1) Description of users general behavior
 # 2) Estimate effect of "sign_up" into "revenue"
 # 3) Evaluating model's predictive capacity
 # 4) Evaluation: ¿is there correlation or causality?
@@ -10,37 +10,65 @@
 # -----------------------------------------------------
 
 # -----------------------------------------------------
-# 0) Good practices, clean variables and libraries
+# 0) Clean variables, libraries and data
 # -----------------------------------------------------
 
-# Clean environment and libraries
-rm(list = ls())
-
+# Libraries
 require(pacman)
-p_load(dplyr, tidyr, readr, ggplot2, corrplot)
+p_load(dplyr, tidyr, tidyverse, readr, ggplot2, corrplot)
 
-# Load data
-db <- read_csv("data/cleaned_data.csv")
+# Change data name
+db <- parte_a
 
-# See variables
+# See and keep variables
 vars <- colnames(db)
+
+# Get categoric and non-categoric variables
+categoric_vars <- sapply(db, is.factor)
+non_categoric_vars <- !categoric_vars
 
 # -----------------------------------------------------
 # 1) Description of users general behaviour
 # -----------------------------------------------------
 # Summary statistics
 summary(db)
+lapply(db[, non_categoric_vars], summary)
 
-# Get numeric variables
-numeric_vars <- sapply(df, is.numeric)
+# Histograms (Para no categóricas) (#TODO: falta ponerlo bonito)
+histograma_f <-  function(var_name) {
+  plot(density(db[[var_name]]), main = paste("Density of", var_name))
+}
+lapply(names(db)[non_categoric_vars], histograma_f)
 
-# See pairs
-#pairs(~IngresosSemanales+TiempoPromedioServicio+ExperienciaEstilista+PrecioServicioPromedio, data=DatosTarea5_punto2)
+# Log-Revenue
+plot(density(log(db$Revenue)), main = "Density of log-Revenue")
 
+# Box-wiskers (Para no categóricas) 
+#TODO no sé si esto lo necesito realmente
+box_f <-  function(var_name) {
+  boxplot(db[[var_name]], main = paste("Boxplot of", var_name))
+}
+lapply(names(db)[non_categoric_vars], box_f)
 
-# Correlogram for numeric variables
-cor_matrix <- cor(df[, numeric_vars], use = "complete.obs")
-corrplot(cor_matrix, method = "circle")
+# Boxplots (Para categóricas)
+#TODO no sé si esto lo necesito realmente; podría ser solo % de la población total
+lapply(names(db)[categoric_vars], box_f)
+  # Sumar todos los returning; hay 95k / 100k
+  sum(db$is_returning_user == 1, na.rm = TRUE)
+
+  # Sumar los sign_up; haay 77k / 100K
+  sum(db$sign_up == 1, na.rm = TRUE)
+
+# Boxplots categóricas vs revenue
+# Todo: gráficas bien, pero imprime un montón de números 
+box_f_cat_rev <-  function(var_name) {
+  boxplot(log(db$Revenue) ~ db[[var_name]], main = paste("Boxplot of log(Revenue) by", var_name))
+}
+lapply(names(db)[categoric_vars], box_f_cat_rev)
+
+# See pairs (correlations)
+str <- paste0("~", paste(names(db)[non_categoric_vars], collapse = "+"))
+pairs(db[, names(db)[non_categoric_vars]])
 
 # Pairwise scatterplots
 ggpairs(df[, numeric_vars])
