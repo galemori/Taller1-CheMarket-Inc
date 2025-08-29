@@ -24,7 +24,7 @@ p_load(rvest, dplyr, tidyr, readr, httr, jsonlite)
 
 
 # Load data for part A and b (relative path)
-parte_a <- readRDS("Parte_A.rds")
+parte_a <- readRDS("stores/Parte_A.Rds")
 
 # Verify no null data
 colSums(is.na(parte_a))
@@ -35,12 +35,14 @@ parte_a <- parte_a %>%
   mutate(is_returning_user = as.factor(is_returning_user)) %>%
   mutate(sign_up = as.factor(sign_up))
 
+parte_a$device_type <- relevel(parte_a$device_type, ref = "tablet")
+
 ## Faltaría para OS_type si se agrega al final #TODO
 
 # -----------------------------------------------------
 # PART B
 # -----------------------------------------------------
-parte_b <- readRDS("Parte_B.rds")
+parte_b <- readRDS("stores/Parte_B.Rds")
 
 # Verify no null data
 colSums(is.na(parte_b))
