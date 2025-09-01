@@ -11,6 +11,8 @@
 \usepackage{hyperref}
 \usepackage{float}
 \usepackage{moresize}
+\usepackage{booktabs}
+
 
 \makeatletter
 \newcommand{\linebreakand}{%
@@ -40,10 +42,6 @@
 \IEEEauthorblockN{Gabriel Alejandro Moreno Riveros}
 \IEEEauthorblockA{202014583\\
 \href{mailto:g.morenor@uniandes.edu.co}{\texttt{g.morenor@uniandes.edu.co}}}
-\linebreakand
-\IEEEauthorblockN{Juan Sebastián Sierra Tarazona}
-\IEEEauthorblockA{202123725\\
-\href{mailto:j.sierrat@uniandes.edu.co}{\texttt{j.sierrat@uniandes.edu.co}}}
 }
 
 
@@ -107,46 +105,159 @@ lo que beneficia métodos lineales y tests que asumen normalidad de errores.
 \end{figure}
 
 
-Partición
+
+\subsection{Estimación del efecto de registrarse sobre el gasto}
+
+En este caso queremos analizar el efecto de registrarse sobre el gasto de los usuarios. 
+Sin embargo, es importante tener en cuenta que la relación entre estas variables puede estar influenciada por otras variables de nuestro modelo, 
+en particular, en el siguiente gráfico presentamos como cambia el gasto dentro de diferentes clases de usuarios.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figures/GastoA.png}
+    \caption{Gasto promedio por clase de usuario}
+    \label{fig:coefplot}
+\end{figure}
+
+Queremos tener esto en cuenta ya que estimar de manera ingenua el efecto del registro sobre el gasto podría llevar a conclusiones erróneas.
+Por ejemplo, si observamos que los usuarios registrados tienden a gastar más, esto podría deberse a que otras variables los hicieron registrarse, y puede que estas variables también
+estén teniendo un efecto sobre el gasto.
 
 
-\subsection{Estimación del efecto de registrarse}
-
-Marco conceptual, sesgo por variables omitidas.
 
 
-Densidades
-
-Histogramas
-
-Boxplot
-
-\subsection{Efecto de registrarse sobre el gasto}
+\subsection{Capacidad predictiva del modelo}
 
 
-Diferentes modelos
-
-pseudo coefplot coeficientes
-
-Interpretación
-
-multicolinealidad
-
-
-\subsection{Reflexión sobre causalidad y recomendación preliminar}
+\subsection{Recomendación preliminar}
 
 
 \section{Datos experimentales: ¿Funciona facilitar el registro?}
 
 \subsection{Verificación del experimento}
 
+Se implementó un cambio en el diseño del sitio para facilitar el proceso de registro. 
+Esta intervención fue asignada aleatoriamente a algunos usuarios, lo que permite evaluar su impacto sobre el gasto 
+como un experimento de manera más rigurosa.
+
+Queremos ver si el experimento fue bien implementado, es decir, si los grupos de control y tratamiento son comparables en términos de características observables.
+
+Para ello, se realizó un análisis de balance entre el grupo de tratamiento y el de control. Para las variables continuas se aplicaron pruebas $t$ de diferencias de medias, mientras que para las categóricas se emplearon pruebas de Chi-cuadrado ($\chi^2$), además de comprobar de manera gráfica.
+En la siguiente figura se muestran las medias de las diferentes covariables entre los grupos de tratamiento y control. Posteriormente, se muestran los resultados 
+estadísticos de la prueba de diferencia de medias.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/21.png}
+
+    \includegraphics[width=0.3\textwidth]{figures/22.png}
+
+    \includegraphics[width=0.3\textwidth]{figures/23.png}
+
+    \includegraphics[width=0.3\textwidth]{figures/24.png}
+
+    \includegraphics[width=0.3\textwidth]{figures/25.png}
+
+
+    \caption{Análisis de balance entre grupos de tratamiento y control}
+    \label{fig:balance}
+\end{figure}
+
+\begin{table}[H]
+\ssmall
+\centering
+\caption{Balance entre grupos de control y tratamiento}
+\label{tab:balance}
+\begin{tabular}{lccc}
+\hline
+\textbf{Variable} & \textbf{Media (Control)} & \textbf{Media (Tratamiento)} & \textbf{p-valor (test)} \\ 
+\hline
+Tiempo en plataforma & 4.97 & 5.09 & 0.247 \\
+Sesiones pasadas     & 2.99 & 3.04 & 0.245 \\
+Tipo de dispositivo  & --   & --   & 0.210 (Chi$^2$) \\
+Sistema operativo    & --   & --   & 0.924 (Chi$^2$) \\
+Usuario recurrente   & --   & --   & 0.771 (Chi$^2$) \\
+\hline
+\end{tabular}
+
+\hfill \break
+Prueba de balance entre grupos de control y tratamiento. 
+\end{table}
+
+Los resultados muestran que no existen diferencias estadísticamente significativas entre los grupos en las covariables observadas. Esto respalda la validez del procedimiento de asignación aleatoria, garantizando que el tratamiento y el control son comparables al inicio del experimento.
+
+
 \subsection{Efecto sobre el registro}
+
+Con el objetivo de evaluar si una interfaz más rápida en el proceso de registro incrementa la probabilidad de que los usuarios completen exitosamente su inscripción en la plataforma,
+se estimó un modelo de regresión logística para identificar el efecto del tratamiento sobre la probabilidad de registro, los resultados se presentan en la siguiente tabla.
+
+\begin{table}[H]
+\centering
+\caption{Efecto del tratamiento sobre el registro}
+\label{tab:glm_signup_treatment}
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{Coeficiente} & \textbf{Error estándar} \\ 
+\midrule
+Intercepto & -3.06e-14*** & (4.35e-16) \\
+Tratamiento (easier\_signup) & 1.000*** & (6.17e-16) \\
+\midrule
+Observaciones & \multicolumn{2}{c}{10,000} \\
+\bottomrule
+\multicolumn{3}{l}{Errores estándar entre paréntesis.} \\
+\multicolumn{3}{l}{$*** p < 0.01, ** p < 0.05, * p < 0.1$.} \\
+\end{tabular}
+
+\hfill \break
+
+Regresión logística para estimar el efecto del tratamiento sobre la probabilidad de registro.
+\end{table}
+
+Los resultados muestran que crear una interfaz de rápido acceso hace que prácticamente todos los individuos del grupo de tratamiento completaron el registro, en contraste con el grupo de control. Sin embargo, la magnitud absoluta del efecto (100\%) sugiere la presencia de separación perfecta, lo que obliga a ser prudentes en la generalización a otros contextos.
+
 
 \subsection{Efecto sobre el gasto}
 
+Con el objetivo de evaluar si una interfaz más rápida en el proceso de registro incrementa la gasten en la plataforma, se estimó un modelo de regresión para identificar el efecto del tratamiento sobre la ganancias. Los resultados se presentan en la siguiente tabla.
+
+\begin{table}[H]
+\centering
+\caption{Efecto del tratamiento sobre los ingresos}
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{Coeficiente} & \textbf{Error estándar} \\ 
+\midrule
+Intercepto & 3.978*** & (0.051) \\
+Tratamiento (easier\_signup) & 0.491*** & (0.073) \\
+\midrule
+Observaciones & \multicolumn{2}{c}{10,000} \\
+R-cuadrado & \multicolumn{2}{c}{0.0045} \\
+\bottomrule
+\multicolumn{3}{l}{Errores estándar entre paréntesis.} \\
+\multicolumn{3}{l}{$*** p < 0.01, ** p < 0.05, * p < 0.1$.} \\
+\end{tabular}
+\end{table}
+
+Los resultados muestran que las personas que usan una interfaz mas rapida generaron $0.49$ unidades monetarias más de ingreso que las personas con la interfaz original, sin embargo este efecto no es significativo sólo explica una pequeña parte de la variación de los ingresos por $R^2 (0.0045)$. 
+
+
+
 \subsection{Limitaciones y robustez}
 
+El experimento aleatorio proporciona evidencia clara de que la interfaz más rápida aumenta los registros y produce un incremento promedio en ingresos. Sin embargo hay problemas con la separación perfecta entre tratados y controles, lo que puede implicar que la magnitud del experimento no sea totalmente fiable. La presencia potencial de variables omitidas podría explicar la separación perfecta además de sesgar la estimación. Otra limitación del experimento es el bajo poder explicativo que tiene el experimento ya que la mayor parte de la variación en Revenue queda sin explicar, lo que sugiere heterogeneidad relevante entre usuarios y limita la capacidad del experimento para predecir resultados económicos agregados.
+
+
+
+
 \subsection{Recomendación final}
+
+
+El experimento muestra que la interfaz de registro más rápida genera un efecto positivo tanto en los ingresos como en la tasa de registros. Sin embargo, recomendamos mantener la intervención en la escala actual antes de una expansión, dado que la base de información disponible es limitada y puede ocultar factores relevantes que influyen en la relación observada, lo que introduce un riesgo de sesgo por omisión. Para reducir esa incertidumbre y mejorar la capacidad explicativa del modelo, es necesario ampliar la recolección de datos incorporando variables adicionales sobre el comportamiento de los usuarios, características de perfil, factores contextuales. de modo que el análisis econométrico pueda ofrecer estimaciones más sólidas y confiables que sustentan una decisión estratégica con mayor certeza.
+
+
+
+
 
 \section{Conclusiones}
 
