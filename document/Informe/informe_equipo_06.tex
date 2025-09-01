@@ -10,7 +10,7 @@
 \usepackage{url}
 \usepackage{hyperref}
 \usepackage{float}
-
+\usepackage{moresize}
 
 \makeatletter
 \newcommand{\linebreakand}{%
@@ -62,29 +62,31 @@ En la segunda parte, analizamos un experimento aleatorio en el que se facilitó 
 
 \subsection{Datos y preparación}
 
-Para el análisis observacional, contamos con un conjunto de $100.000$ observaciones históricas de los usuarios de CheMarket. Las variables disponibles son $\texttt{time\_spent}$: tiempo en el sitio durante la sesión, $\texttt{past\_sessions}$: número de sesiones anteriores, $\texttt{os\_type}$: sistema operativo (OS X, Windows, otros), $\texttt{is\_returning\_user}$: si el usuario ya había visitado antes, $\texttt{sign\_up}$: si se registró o no y $\texttt{revenue}$: cuanto gastó en cada sesión.
+Para el análisis observacional, contamos con un conjunto de $100.000$ observaciones históricas de los usuarios de CheMarket. Las variables disponibles son $\texttt{time\_spent}$: tiempo en el sitio durante la sesión, $\texttt{past\_sessions}$: número de sesiones anteriores, 
+$\texttt{device\_type}$: tipo de dispositivo (móvil, escritorio, tablet), $\texttt{os\_type}$: sistema operativo (OS X, Windows, otros), $\texttt{is\_returning\_user}$: si el usuario ya había visitado antes, $\texttt{sign\_up}$: si se registró o no y $\texttt{revenue}$: cuanto gastó en cada sesión.
 
 En la siguiente tabla se presentan las estadísticas descriptivas de estas variables.
 
 
 \begin{table}[H]
+\ssmall
 \centering
 \caption{Estadísticas descriptivas de las variables}
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
- & \textbf{Tiempo} & \textbf{Sesiones} &  \textbf{OS} & \textbf{Recurrente?} & \textbf{Revenue} \\
+ & \textbf{Tiempo} & \textbf{Sesiones} & \textbf{Dispositivo} & \textbf{OS} & \textbf{Recurrente?} & \textbf{Revenue} \\
 \hline
-Mín & 0.000125 & 0  & Otro: 9909 & No: 4930 & 0.5451 \\
-25\% & 1.4247 & 2  & OS X: 30253 & Sí: 95070 & 2.3400 \\
-Mediana & 3.4384 & 3  & Windows: 59838 & & 3.1370 \\
-50\% & 4.9946 & 3.001  & & & 3.9766 \\
-75\%  & 6.9117 & 4  & & & 4.5221 \\
-Máx & 54.3989 & 14  & & & 36.2934 \\
+Mín & 0.000125 & 0 & Tablet: 9882 & Otro: 9909 & No: 4930 & 0.5451 \\
+25\% & 1.4247 & 2 & Escritorio: 40009 & OS X: 30253 & Sí: 95070 & 2.3400 \\
+Mediana & 3.4384 & 3 & Móvil: 50109 & Windows: 59838 & & 3.1370 \\
+50\% & 4.9946 & 3.001 & & & & 3.9766 \\
+75\%  & 6.9117 & 4  & & & & 4.5221 \\
+Máx & 54.3989 & 14  & & & & 36.2934 \\
 \hline
 \end{tabular}
 
 \hfill \break
-Estadísticas descriptivas de las variables numéricas y número por clase para las categóricas.
+Estadísticas descriptivas de las variables numéricas y cantidad por clase para las categóricas.
 
 \end{table}
 

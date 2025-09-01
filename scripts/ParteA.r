@@ -34,11 +34,41 @@ non_categoric_vars <- !categoric_vars
 summary(db)
 # TODO exportar
 
-# Histograms (Para no categóricas) (#TODO: falta ponerlo bonito)
-histograma_f <-  function(var_name) {
-  plot(density(db[[var_name]]), main = paste("Density of", var_name))
+# Qué graficar con cada tipo
+dens_vars <- c("time_spent", "Revenue")
+hist_vars <- "past_sessions"
+
+# Función de densidad (bonita)
+plot_density <- function(var_name) {
+  ggplot(db, aes_string(x = var_name)) +
+    geom_density(na.rm = TRUE, linewidth = 0.8, fill = "#6aa6f8", alpha = 0.35) +
+    labs(title = paste("Densidad de", var_name),
+         x = var_name, y = "Densidad") +
+    theme_minimal(base_size = 12)
 }
-lapply(names(db)[non_categoric_vars], histograma_f)
+
+# Histograma con binwidth adaptativo (Freedman–Diaconis con fallback)
+plot_hist <- function(var_name) {
+  x <- db[[var_name]]
+  b0 <- floor(min(x, na.rm = TRUE)) - 0.5  # centra cada barra en los enteros
+  ggplot(db, aes_string(x = var_name)) +
+    geom_histogram(
+      binwidth = 1, boundary = b0, closed = "left",
+      na.rm = TRUE, linewidth = 0.3, fill = "#3a5e8c", alpha = 0.85
+    ) +
+    scale_x_continuous(
+      breaks = seq(floor(min(x, na.rm = TRUE)), ceiling(max(x, na.rm = TRUE)), by = 1),
+      expand = expansion(mult = c(0, 0.02))
+    ) +
+    labs(title = paste("Histograma de", var_name),
+         x = var_name, y = "Frecuencia") +
+    theme_minimal(base_size = 12)
+}
+
+# Imprimir las densidades (time_spent, Revenue)
+invisible(lapply(dens_vars, function(v) print(plot_density(v))))
+# Imprimir el histograma (past_sessions)
+invisible(lapply(hist_vars, function(v) print(plot_hist(v))))
 
 # Log-Revenue y sqrt-time (vemos que si mejoran y lo cambiamos en la db)
 #TODO: exportar log-rev para anexo
