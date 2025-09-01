@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1756689726 "/Users/larubiano0/Desktop/andes/12do semestre/Ciencia de datos y econometría aplicada/Taller1-CheMarket-Inc/document/Informe/informe_equipo_06.tex" "informe_equipo_06.pdf" "informe_equipo_06" 1756689726 0
-  "/Users/larubiano0/Desktop/andes/12do semestre/Ciencia de datos y econometría aplicada/Taller1-CheMarket-Inc/document/Informe/informe_equipo_06.tex" 1756689726 5260 5ff198c867c4a53893ee0e8e42ad4082 ""
+["pdflatex"] 1756692349 "/Users/larubiano0/Desktop/andes/12do semestre/Ciencia de datos y econometría aplicada/Taller1-CheMarket-Inc/document/Informe/informe_equipo_06.tex" "informe_equipo_06.pdf" "informe_equipo_06" 1756692349 0
+  "/Users/larubiano0/Desktop/andes/12do semestre/Ciencia de datos y econometría aplicada/Taller1-CheMarket-Inc/document/Informe/informe_equipo_06.tex" 1756692349 5948 8b6da27b013c48d0b9d1adce6e890653 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/adobe/courier/pcrr7t.tfm" 1136768653 960 379cc0019370a9e0208a0a3f949f847a ""
@@ -98,9 +98,11 @@
   "/usr/local/texlive/2023/texmf-var/web2c/pdftex/pdflatex.fmt" 1702416625 7883470 10b417c6e4525a0d9234cdfd48705fc0 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
   "IEEEtran.cls" 1756688388 281959 d0e97cf1d7c2ca12da582d8167cd9fff ""
-  "informe_equipo_06.aux" 1756689726 2550 51c9434a1722ebbefaec2e70189469c7 "pdflatex"
-  "informe_equipo_06.out" 1756689726 2750 ab3d4963a8b7e1507457c070a24960b4 "pdflatex"
-  "informe_equipo_06.tex" 1756689726 5260 5ff198c867c4a53893ee0e8e42ad4082 ""
+  "figures/revenueA.png" 1756691301 30083 3d9f81f5890d9782fdbe80762f99cbd5 ""
+  "figures/timespentA.png" 1756691291 30087 704c554a3ff8ca8555cde8e922420a4e ""
+  "informe_equipo_06.aux" 1756692349 2829 e6929333b909c3a49fc3eece687b751e "pdflatex"
+  "informe_equipo_06.out" 1756692349 2750 ab3d4963a8b7e1507457c070a24960b4 "pdflatex"
+  "informe_equipo_06.tex" 1756692349 5948 8b6da27b013c48d0b9d1adce6e890653 ""
   (generated)
   "informe_equipo_06.aux"
   "informe_equipo_06.log"

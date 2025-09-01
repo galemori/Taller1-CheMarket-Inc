@@ -90,15 +90,25 @@ Estadísticas descriptivas de las variables numéricas y cantidad por clase para
 
 \end{table}
 
-Transformaciones
+En la siguiente figura se presentan las distribuciones originales de \texttt{Revenue} y \texttt{time\_spent}.
+Se puede observar que la densidad de ambas variables muestra muchos valores pequeños y pocos muy grandes.
+Para nuestro análisis decidimos aplicar una transformación logarítmica y de raíz cuadrada respectivamente,
+ya que estas transformaciones comprimen la cola y acercan la distribución a algo más gaussiano, 
+lo que beneficia métodos lineales y tests que asumen normalidad de errores.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.3\textwidth]{figures/revenueA.png}
+
+    \includegraphics[width=0.3\textwidth]{figures/timespentA.png}
+    \caption{Distribución de \texttt{Revenue} y \texttt{time\_spent}}
+    \label{fig:distribucion}
+\end{figure}
+
 
 Partición
 
-Tabla de variables 
-
-Tabla estadísticas descriptivas
-
-Matriz de correlaciones
 
 \subsection{Estimación del efecto de registrarse}
 

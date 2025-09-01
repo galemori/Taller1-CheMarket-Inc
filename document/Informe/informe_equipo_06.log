@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.12)  31 AUG 2025 20:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023) (preloaded format=pdflatex 2023.12.12)  31 AUG 2025 21:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -412,6 +412,30 @@ Overfull \hbox (33.16025pt too wide) in paragraph at lines 75--87
  [][] 
  []
 
+<figures/revenueA.png, id=68, 671.50874pt x 473.77pt>
+File: figures/revenueA.png Graphic file (type png)
+<use figures/revenueA.png>
+Package pdftex.def Info: figures/revenueA.png  used on input line 102.
+(pdftex.def)             Requested size: 154.80157pt x 109.21782pt.
+<figures/timespentA.png, id=70, 671.50874pt x 473.77pt>
+File: figures/timespentA.png Graphic file (type png)
+<use figures/timespentA.png>
+Package pdftex.def Info: figures/timespentA.png  used on input line 104.
+(pdftex.def)             Requested size: 154.80157pt x 109.21782pt.
+[1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
+
+
+
+pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.118 D
+       ensidades
+pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.118 D
+       ensidades <./figures/revenueA.png> <./figures/timespentA.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -423,31 +447,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[1{/usr/local/texlive/2023/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2023/texmf-dist/fonts/enc/dvips/base/8r.enc}
+[2
 
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.149 \end{document}
-                    ] (./informe_equipo_06.aux)
+] (./informe_equipo_06.aux)
 Package rerunfilecheck Info: File `informe_equipo_06.out' has not changed.
 (rerunfilecheck)             Checksum: AB3D4963A8B7E1507457C070A24960B4;2750.
  ) 
 Here is how much of TeX's memory you used:
- 11122 strings out of 476025
- 176387 string characters out of 5790016
- 1884388 words of memory out of 5000000
- 31409 multiletter control sequences out of 15000+600000
- 549696 words of font info for 103 fonts, out of 8000000 for 9000
+ 11145 strings out of 476025
+ 176815 string characters out of 5790016
+ 1882388 words of memory out of 5000000
+ 31425 multiletter control sequences out of 15000+600000
+ 550211 words of font info for 105 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,9n,76p,714b,436s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,9n,76p,714b,438s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2023/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on informe_equipo_06.pdf (1 page, 78756 bytes).
+Output written on informe_equipo_06.pdf (2 pages, 123776 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
- 89 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 123 PDF objects out of 1000 (max. 8388607)
+ 94 compressed objects within 1 object stream
+ 18 named destinations out of 1000 (max. 500000)
+ 115 words of extra memory for PDF output out of 10000 (max. 10000000)
 
