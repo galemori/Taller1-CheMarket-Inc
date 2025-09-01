@@ -40,7 +40,7 @@ parte_a <- parte_a %>%
 parte_a$device_type <- relevel(parte_a$device_type, ref = "tablet")
 
 # Poner de base aquella categoría con menor cantidad de observaciones
-parte_a$device_type <- relevel(parte_a$os_type, ref = "other")
+parte_a$os_type <- relevel(parte_a$os_type, ref = "other")
 
 # -----------------------------------------------------
 # PART B

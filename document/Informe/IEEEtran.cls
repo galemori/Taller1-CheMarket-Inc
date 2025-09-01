@@ -2605,7 +2605,7 @@
 \def\refname{References}
 \def\indexname{Index}
 \def\figurename{Fig.}
-\def\tablename{TABLE}
+\def\tablename{Tabla}
 \@IEEEcompsocconfonly{\def\figurename{Figure}}
 \def\partname{Part}
 \def\appendixname{Appendix}

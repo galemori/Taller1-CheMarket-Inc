@@ -9,6 +9,8 @@
 \usepackage{xcolor}
 \usepackage{url}
 \usepackage{hyperref}
+\usepackage{float}
+
 
 \makeatletter
 \newcommand{\linebreakand}{%
@@ -50,17 +52,41 @@
 
 
 \section{Introducción}
-A través de este informe nuestro grupo de economistas y cientificos de datos 
-emplea diferentes técnicas de análisis estadístico y machine learning
-para estudiar el comportamiento de los usuarios en la \textit{CheMarket Inc}.
-En particular, nos enfocaremos en entender qué variables generan revenue para la compañía. 
-Este análisis ayuda a la toma de decisiones estratégicas informadas. 
+A través de este informe, nuestro grupo de economistas y científicos de datos emplea diferentes técnicas de análisis estadístico y de machine learning para estudiar el comportamiento de los usuarios en \textbf{CheMarket Inc.} En particular, nos enfocamos en entender qué variables impulsan el revenue de la compañía, con el fin de generar evidencia que apoye la toma de decisiones estratégicas informadas.
+
+El análisis se divide en dos partes complementarias. En la primera parte, trabajamos con datos observacionales para explorar patrones en el comportamiento de los usuarios: ¿quiénes gastan más?, ¿qué factores están asociados con el registro en la plataforma?, ¿qué variables ayudan a predecir el gasto individual? A partir de regresiones y modelos predictivos evaluamos si existe una diferencia sistemática en el gasto entre usuarios registrados y no registrados, y discutimos posibles sesgos que afectan la interpretación causal.
+
+En la segunda parte, analizamos un experimento aleatorio en el que se facilitó el proceso de registro para un grupo de usuarios. Esta intervención nos permite estimar de manera más rigurosa el efecto del registro sobre el gasto, así como evaluar la efectividad del nuevo diseño en incrementar la tasa de registros. Finalmente, reflexionamos sobre la validez de los resultados, las limitaciones del experimento y presentamos recomendaciones concretas sobre si conviene escalar esta intervención.
 
 \section{Datos observacionales: ¿Qué impulsa las ventas?}
 
 \subsection{Datos y preparación}
 
-Fuente y variables
+Para el análisis observacional, contamos con un conjunto de $100.000$ observaciones históricas de los usuarios de CheMarket. Las variables disponibles son $\texttt{time\_spent}$: tiempo en el sitio durante la sesión, $\texttt{past\_sessions}$: número de sesiones anteriores, $\texttt{os\_type}$: sistema operativo (OS X, Windows, otros), $\texttt{is\_returning\_user}$: si el usuario ya había visitado antes, $\texttt{sign\_up}$: si se registró o no y $\texttt{revenue}$: cuanto gastó en cada sesión.
+
+En la siguiente tabla se presentan las estadísticas descriptivas de estas variables.
+
+
+\begin{table}[H]
+\centering
+\caption{Estadísticas descriptivas de las variables}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+ & \textbf{Tiempo} & \textbf{Sesiones} &  \textbf{OS} & \textbf{Recurrente?} & \textbf{Revenue} \\
+\hline
+Mín & 0.000125 & 0  & Otro: 9909 & No: 4930 & 0.5451 \\
+25\% & 1.4247 & 2  & OS X: 30253 & Sí: 95070 & 2.3400 \\
+Mediana & 3.4384 & 3  & Windows: 59838 & & 3.1370 \\
+50\% & 4.9946 & 3.001  & & & 3.9766 \\
+75\%  & 6.9117 & 4  & & & 4.5221 \\
+Máx & 54.3989 & 14  & & & 36.2934 \\
+\hline
+\end{tabular}
+
+\hfill \break
+Estadísticas descriptivas de las variables numéricas y número por clase para las categóricas.
+
+\end{table}
 
 Transformaciones
 
@@ -74,6 +100,9 @@ Matriz de correlaciones
 
 \subsection{Estimación del efecto de registrarse}
 
+Marco conceptual, sesgo por variables omitidas.
+
+
 Densidades
 
 Histogramas
@@ -82,7 +111,6 @@ Boxplot
 
 \subsection{Efecto de registrarse sobre el gasto}
 
-Marco conceptual, sesgo por variables omitidas.
 
 Diferentes modelos
 
@@ -93,9 +121,7 @@ Interpretación
 multicolinealidad
 
 
-\subsection{Reflexión sobre causalidad}
-
-\subsection{Recomendación preliminar}
+\subsection{Reflexión sobre causalidad y recomendación preliminar}
 
 
 \section{Datos experimentales: ¿Funciona facilitar el registro?}
